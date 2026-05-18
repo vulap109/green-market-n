@@ -57,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="mt-auto">
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <span className="text-base font-black text-red-600">
+            <span className="text-base font-bold text-red-600">
               {showContactPrice ? "Liên Hệ" : formatMoney(salePrice)}
             </span>
             {!showContactPrice && showOriginalPrice ? (

@@ -173,7 +173,7 @@ export default function CartPageClient() {
                     <i className="fa-solid fa-triangle-exclamation text-3xl text-red-400" aria-hidden="true" />
                   </div>
                   <p className="font-semibold text-gray-700">{productLoadError}</p>
-                  <p className="mt-1 text-sm">Vui lÃ²ng táº£i láº¡i trang hoáº·c thá»­ láº¡i sau.</p>
+                  <p className="mt-1 text-sm">Vui lòng tải lại trang hoặc thử­ lại sau.</p>
                 </div>
               ) : resolvedItems.length ? (
                 resolvedItems.map((item) => (
@@ -337,7 +337,7 @@ export default function CartPageClient() {
                         <p>
                           Mã: <strong className="text-gray-700">FREESHIP20K2026T3</strong>
                         </p>
-                        <p>HSD: 31/03/2026</p>
+                        {/* <p>HSD: 31/03/2026</p> */}
                       </div>
                       <button
                         type="button"

@@ -380,6 +380,6 @@ export function getProductDisplayPricing(product?: ProductRecord | null, selecte
   return {
     currentPrice,
     originalPrice,
-    showOriginalPrice: originalPrice >= currentPrice
+    showOriginalPrice: originalPrice > currentPrice
   };
 }

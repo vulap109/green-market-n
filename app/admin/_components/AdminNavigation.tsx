@@ -25,6 +25,11 @@ const adminNavItems: AdminNavItem[] = [
     label: "Sản phẩm"
   },
   {
+    href: "/admin/news",
+    iconClassName: "fa-solid fa-newspaper",
+    label: "Bài viết"
+  },
+  {
     href: "/admin/orders",
     iconClassName: "fa-solid fa-receipt",
     label: "Đơn hàng"

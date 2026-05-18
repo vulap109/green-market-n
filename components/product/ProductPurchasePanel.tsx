@@ -101,7 +101,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
 
         <div className="mb-6 rounded-lg bg-gray-50 p-4">
           <div className="mb-1 flex items-end gap-3">
-            <span className="text-3xl font-black text-red-600">
+            <span className="text-3xl font-bold text-red-600">
               {showContactPrice ? "Liên Hệ" : formatMoney(pricing.currentPrice)}
             </span>
             {!showContactPrice && pricing.showOriginalPrice ? (
@@ -110,12 +110,17 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
               </span>
             ) : null}
           </div>
-          {!showContactPrice ? (
+          {showContactPrice ? (
+            <p className="mt-2 text-sm text-red-600">
+              Giá sản phẩm có thể thay đổi theo mùa và yêu cầu thiết kế.
+              Vui lòng liên hệ để được tư vấn và báo giá chính xác nhất.
+            </p>
+          ) : (
             <div className="mt-2 flex items-center gap-1 text-xs font-bold text-red-500">
               <i className="fa-solid fa-fire text-orange-500"></i>
               <span>SẢN PHẨM FLASH SALE</span>
             </div>
-          ) : null}
+          )}
         </div>
 
         {variantOptions.length ? (
