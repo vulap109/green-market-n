@@ -26,18 +26,19 @@ export type PaymentMethod = "bank" | "cod";
 
 export type NewsArticle = {
   author?: string;
-  contentFile?: string;
-  date?: string;
+  createdAt?: string;
   dateLabel?: string;
   description?: string;
   featured?: boolean;
   hero?: string;
-  heroAlt?: string;
   id?: number | string;
+  metaDescription?: string;
+  metaTitle?: string;
+  publishedAt?: string;
   slug?: string;
   thumbnail?: string;
-  thumbnailAlt?: string;
   title?: string;
+  updatedAt?: string;
 };
 
 export type CheckoutOrderItem = {

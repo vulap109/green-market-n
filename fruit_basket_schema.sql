@@ -170,6 +170,8 @@ CREATE TABLE IF NOT EXISTS news_post (
     excerpt             TEXT,
     content             TEXT NOT NULL,
     thumbnail           TEXT,
+    hero                TEXT,
+    featured            BOOLEAN NOT NULL DEFAULT FALSE,
     meta_title          VARCHAR(255),
     meta_description    TEXT,
     status              VARCHAR(30) NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'archived')),

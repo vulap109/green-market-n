@@ -1,5 +1,5 @@
 import { ORDER_SUCCESS_ROUTE } from "@/lib/routes";
-import { formatString, getPaymentMethodLabel } from "@/lib/utils";
+import { formatDate, formatString, getPaymentMethodLabel } from "@/lib/utils";
 import type { CheckoutOrder } from "@/lib/types";
 
 export const EMAILJS_PUBLIC_KEY = "pRg2xzuGVPHOs4IN-";
@@ -67,22 +67,13 @@ export async function submitCheckoutOrder(order: CheckoutOrder): Promise<void> {
 }
 
 export function formatOrderDate(value?: string | null): string {
-  if (!value) {
-    return "";
-  }
-
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return "";
-  }
-
-  return new Intl.DateTimeFormat("vi-VN", {
+  return formatDate(value, {
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
     month: "2-digit",
     year: "numeric"
-  }).format(date);
+  });
 }
 
 export function buildBankTransferContent(order?: Partial<CheckoutOrder> | null): string {

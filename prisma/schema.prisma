@@ -121,6 +121,8 @@ model NewsPost {
   excerpt         String?   @db.Text
   content         String    @db.Text
   thumbnail       String?   @db.Text
+  hero            String?   @db.Text
+  featured        Boolean   @default(false)
   metaTitle       String?   @map("meta_title") @db.VarChar(255)
   metaDescription String?   @map("meta_description") @db.Text
   status          String    @default("draft") @db.VarChar(30)

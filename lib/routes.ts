@@ -42,3 +42,8 @@ export function buildProductDetailUrl(options: Readonly<{ id?: QueryValue; slug?
   const id = formatString(options.id);
   return id ? buildUrlWithQuery(PRODUCT_ROUTE, { id }) : PRODUCT_ROUTE;
 }
+
+export function buildNewsDetailUrl(slug?: string | null): string {
+  const nextSlug = formatString(slug);
+  return nextSlug ? `${NEWS_ROUTE}/${encodeURIComponent(nextSlug)}` : NEWS_ROUTE;
+}

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import NewsArticleClient from "@/components/news/NewsArticleClient";
-import { getNewsData } from "@/lib/data";
-import { findNewsArticle } from "@/lib/news";
-import { getNewsArticleContent } from "@/lib/news-content";
-import { formatLowercaseString, formatString } from "@/lib/utils";
+import { findNewsArticleBySlug } from "@/lib/news-db";
+
+export const dynamic = "force-dynamic";
 
 type NewsArticlePageProps = Readonly<{
   params: Promise<{
@@ -13,39 +12,16 @@ type NewsArticlePageProps = Readonly<{
 }>;
 
 async function getNewsPageData(slug: string) {
-  const normalizedSlug = formatLowercaseString(slug);
+  const newsArticleDetail = await findNewsArticleBySlug(slug);
 
-  if (!normalizedSlug) {
+  if (!newsArticleDetail) {
     return {
       article: null,
       contentHtml: ""
     };
   }
 
-  const newsItems = await getNewsData();
-  const article = findNewsArticle(newsItems, normalizedSlug);
-
-  if (!article) {
-    return {
-      article: null,
-      contentHtml: ""
-    };
-  }
-
-  const contentHtml = await getNewsArticleContent(article.contentFile);
-  return {
-    article,
-    contentHtml
-  };
-}
-
-export async function generateStaticParams() {
-  const newsItems = await getNewsData();
-
-  return newsItems
-    .map((article) => formatString(article.slug))
-    .filter(Boolean)
-    .map((slug) => ({ slug }));
+  return newsArticleDetail;
 }
 
 export async function generateMetadata({ params }: NewsArticlePageProps): Promise<Metadata> {
@@ -59,18 +35,23 @@ export async function generateMetadata({ params }: NewsArticlePageProps): Promis
     };
   }
 
+  const metadataTitle = article.metaTitle || article.title || "Tin tức";
+  const metadataDescription =
+    article.metaDescription || article.description || "Tin tức mới nhất từ Green Market.";
+  const metadataImage = article.hero || article.thumbnail;
+
   return {
-    title: article.title || "Tin tức",
-    description: article.description || "Tin tức mới nhất từ Green Market.",
+    title: metadataTitle,
+    description: metadataDescription,
     openGraph: {
-      title: article.title || "Tin tức",
-      description: article.description || "Tin tức mới nhất từ Green Market.",
-      images: article.hero || article.thumbnail ? [String(article.hero || article.thumbnail)] : undefined
+      title: metadataTitle,
+      description: metadataDescription,
+      images: metadataImage ? [String(metadataImage)] : undefined
     },
     twitter: {
-      title: article.title || "Tin tức",
-      description: article.description || "Tin tức mới nhất từ Green Market.",
-      images: article.hero || article.thumbnail ? [String(article.hero || article.thumbnail)] : undefined
+      title: metadataTitle,
+      description: metadataDescription,
+      images: metadataImage ? [String(metadataImage)] : undefined
     }
   };
 }

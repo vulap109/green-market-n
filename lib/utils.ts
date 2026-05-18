@@ -1,6 +1,7 @@
 import type { PaymentMethod } from "@/lib/types";
 
 type ParamStringValue = string | string[] | null | undefined;
+type DateFormatValue = Date | number | string | null | undefined;
 type ProductSlugSource = Readonly<{
   name?: string | null;
   slug?: string | null;
@@ -61,6 +62,19 @@ export function formatProductSlug(product?: ProductSlugSource | null): string {
 
 export function formatMoney(amount: number | string | null | undefined): string {
   return `${Number(amount || 0).toLocaleString("vi-VN")} \u20AB`;
+}
+
+export function formatDate(value: DateFormatValue, options: Intl.DateTimeFormatOptions): string {
+  if (!value) {
+    return "";
+  }
+
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  return new Intl.DateTimeFormat("vi-VN", options).format(date);
 }
 
 export function getPaymentMethodLabel(method: PaymentMethod | string): string {

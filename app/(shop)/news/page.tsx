@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/static/StaticPageShell";
-import { getNewsData } from "@/lib/data";
-import {
-  buildNewsDetailUrl,
-  sortNewsByDateDesc
-} from "@/lib/news";
-import { HOME_ROUTE } from "@/lib/routes";
+import { getNewsData } from "@/lib/news-db";
+import { buildNewsDetailUrl, HOME_ROUTE } from "@/lib/routes";
 import { resolveAssetPath } from "@/lib/utils";
 import type { NewsArticle } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Tin tức",
@@ -20,17 +18,17 @@ function NewsListItem({ article }: Readonly<{ article: NewsArticle }>) {
   const articleUrl = buildNewsDetailUrl(article.slug);
   const articleTitle = article.title || "Tin tức";
   const articleDescription = article.description || "";
-  const imageUrl = resolveAssetPath(article.thumbnail || article.hero) || "/images/news-8-3-thumb.jpg";
-  const imageAlt = article.thumbnailAlt || article.heroAlt || articleTitle;
+  const imageUrl = resolveAssetPath(article.thumbnail) || "/images/news-8-3-thumb.jpg";
   const author = article.author || "Green Market";
-  const dateLabel = article.dateLabel || article.date || "";
+  const articleDate = article.publishedAt || article.createdAt || "";
+  const dateLabel = article.dateLabel || articleDate;
 
   return (
     <article className="group">
       <Link href={articleUrl} className="relative block aspect-[16/9] overflow-hidden bg-gray-100">
         <Image
           src={imageUrl}
-          alt={imageAlt}
+          alt={articleTitle}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover transition duration-700 group-hover:scale-105"
@@ -54,7 +52,7 @@ function NewsListItem({ article }: Readonly<{ article: NewsArticle }>) {
           {dateLabel ? (
             <>
               <span className="h-1 w-1 rounded-full bg-gray-300" />
-              <time dateTime={article.date}>{dateLabel}</time>
+              <time dateTime={articleDate}>{dateLabel}</time>
             </>
           ) : null}
         </div>
@@ -64,7 +62,7 @@ function NewsListItem({ article }: Readonly<{ article: NewsArticle }>) {
 }
 
 export default async function NewsPage() {
-  const newsItems = sortNewsByDateDesc(await getNewsData());
+  const newsItems = await getNewsData();
 
   return (
     <>

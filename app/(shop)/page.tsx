@@ -3,8 +3,7 @@ import ProductCard from "@/components/catalog/ProductCard";
 import HomeCarousel from "@/components/home/HomeCarousel";
 import NewsCard from "@/components/news/NewsCard";
 import { buildCollectionUrl } from "@/lib/catalog";
-import { getNewsData } from "@/lib/data";
-import { sortHighlightedNews } from "@/lib/news";
+import { getNewsData } from "@/lib/news-db";
 import { findProductByCategory, findProductsByFeatured } from "@/lib/product-db";
 import type { ProductRecord } from "@/lib/product-types";
 
@@ -141,8 +140,11 @@ function SectionHeading({
 }
 
 export default async function HomePage() {
-  const [newsItems, homeShelves] = await Promise.all([
-    getNewsData(),
+  const [homeNewsItems, homeShelves] = await Promise.all([
+    getNewsData({
+      featuredFirst: true,
+      take: 3
+    }),
     Promise.all(
       homeShelfConfigs.map(async (config) => ({
         ...config,
@@ -150,7 +152,6 @@ export default async function HomePage() {
       }))
     )
   ]);
-  const homeNewsItems = sortHighlightedNews(newsItems).slice(0, 3);
 
   return (
     <main className="pb-24">

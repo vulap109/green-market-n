@@ -29,10 +29,9 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
   const [feedback, setFeedback] = useState<FeedbackState | null>(null);
   const articleTitle = article.title || "Tin tức";
   const articleAuthor = article.author || "Green Market";
-  const dateLabel = article.dateLabel || article.date || "";
+  const dateLabel = article.dateLabel || article.publishedAt || article.createdAt || "";
   const heroImagePath =
-    resolveAssetPath(article.hero || article.thumbnail) || "/images/news-8-3-thumb.jpg";
-  const heroImageAlt = article.heroAlt || article.thumbnailAlt || articleTitle;
+    resolveAssetPath(article.hero) || "/images/news-8-3-thumb.jpg";
 
   useEffect(() => {
     if (!feedback) {
@@ -177,12 +176,12 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
           </header>
 
           <figure className="relative mb-10 w-full overflow-hidden rounded-xl">
-            <div className="relative aspect-[16/9] w-full">
+            <div className="relative aspect-[864/219] w-full">
               <Image
                 src={heroImagePath}
-                alt={heroImageAlt}
+                alt={articleTitle}
                 fill
-                sizes="(min-width: 1024px) 896px, 100vw"
+                sizes="(min-width: 1024px) 864px, calc(100vw - 2rem)"
                 className="object-cover"
               />
             </div>
