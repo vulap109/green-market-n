@@ -19,10 +19,6 @@ type NewsArticleClientProps = Readonly<{
   contentHtml: string;
 }>;
 
-function ShareIcon({ label }: Readonly<{ label: string }>) {
-  return <span aria-hidden="true" className="text-xs font-black uppercase">{label}</span>;
-}
-
 export default function NewsArticleClient({ article, contentHtml }: NewsArticleClientProps) {
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -201,7 +197,7 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
               aria-label="Chia sẻ Facebook"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white transition hover:bg-blue-700"
             >
-              <ShareIcon label="F" />
+              <i className="fa-brands fa-facebook-f" aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -209,7 +205,7 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
               aria-label="Chia sẻ Twitter"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-500 text-white transition hover:bg-sky-600"
             >
-              <ShareIcon label="X" />
+              <i className="fa-brands fa-twitter" aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -217,7 +213,7 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
               aria-label="Sao chép liên kết bài viết"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-white transition hover:bg-green-600"
             >
-              <ShareIcon label="L" />
+              <i className="fa-solid fa-link" aria-hidden="true" />
             </button>
           </div>
         </article>

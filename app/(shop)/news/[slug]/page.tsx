@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: NewsArticlePageProps): Promis
   const metadataTitle = article.metaTitle || article.title || "Tin tức";
   const metadataDescription =
     article.metaDescription || article.description || "Tin tức mới nhất từ Green Market.";
-  const metadataImage = article.hero || article.thumbnail;
+  const metadataImage = article.thumbnail;
 
   return {
     title: metadataTitle,

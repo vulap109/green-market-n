@@ -61,7 +61,7 @@ export function formatProductSlug(product?: ProductSlugSource | null): string {
 }
 
 export function formatMoney(amount: number | string | null | undefined): string {
-  return `${Number(amount || 0).toLocaleString("vi-VN")} \u20AB`;
+  return `${Number(amount || 0).toLocaleString("vi-VN")} ₫`;
 }
 
 export function formatDate(value: DateFormatValue, options: Intl.DateTimeFormatOptions): string {
@@ -79,12 +79,12 @@ export function formatDate(value: DateFormatValue, options: Intl.DateTimeFormatO
 
 export function getPaymentMethodLabel(method: PaymentMethod | string): string {
   return method === "cod"
-    ? "Thanh to\u00e1n khi nh\u1eadn h\u00e0ng"
-    : "Chuy\u1ec3n kho\u1ea3n ng\u00e2n h\u00e0ng tr\u1ef1c ti\u1ebfp";
+    ? "Thanh toán khi nhận hàng"
+    : "Chuyển khoản ngân hàng trực tiếp";
 }
 
 export function getPaymentMethodNote(method: PaymentMethod | string): string {
   return method === "cod"
-    ? "Kh\u00e1ch thanh to\u00e1n khi nh\u1eadn h\u00e0ng t\u1eeb nh\u00e2n vi\u00ean giao nh\u1eadn."
-    : "Vui l\u00f2ng m\u1edf th\u00f4ng tin chuy\u1ec3n kho\u1ea3n v\u00e0 chuy\u1ec3n \u0111\u00fang s\u1ed1 ti\u1ec1n, \u0111\u00fang n\u1ed9i dung \u0111\u1ec3 shop x\u00e1c nh\u1eadn nhanh.";
+    ? "Khách thanh toán khi nhận hàng từ nhân viên giao nhận."
+    : "Vui lòng mở thông tin chuyển khoản và chuyển đúng số tiền, đúng nội dung để shop xác nhận nhanh.";
 }
