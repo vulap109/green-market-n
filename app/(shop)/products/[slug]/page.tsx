@@ -43,9 +43,12 @@ function ServiceItem({
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const routeParams = await params;
   const product = await findProductBySlug(formatString(routeParams.slug));
+  const metadataDescription = product?.metaDescription;
+  const metadataTitle = product?.metaTitle || product?.name || "Thông Tin Sản Phẩm";
 
   return {
-    title: product?.name || "Thông Tin Sản Phẩm"
+    title: metadataTitle,
+    ...(metadataDescription ? { description: metadataDescription } : {})
   };
 }
 

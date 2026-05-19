@@ -62,6 +62,8 @@ export const findCategoryBySlug = cache(async (slug?: string | null): Promise<Ca
           }
         ]
       },
+      metaDescription: true,
+      metaTitle: true,
       name: true,
       slug: true
     }
@@ -85,6 +87,7 @@ export const findProductBySlug = cache(async (slug?: string | null): Promise<Pro
     select: getProductRecordSelect({
       includeCategoryName: true,
       includeDescription: true,
+      includeMetadata: true,
       includeVariants: true
     })
   });
@@ -93,6 +96,7 @@ export const findProductBySlug = cache(async (slug?: string | null): Promise<Pro
     ? mapProductRecord(product, {
         includeCategoryName: true,
         includeDescription: true,
+        includeMetadata: true,
         includeVariants: true
       })
     : null;

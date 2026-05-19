@@ -13,6 +13,8 @@ export type CatalogFilterOption = {
 
 export type ProductFeaturedCatalog = {
   featured: string;
+  metaDescription: string;
+  metaTitle: string;
   title: string;
 };
 
@@ -65,10 +67,14 @@ const subcategoryFilterByCategory: Record<string, CatalogFilterOption[]> = {
 const productFeaturedCatalogByRouteCategory: Record<string, ProductFeaturedCatalog> = {
   "ban-chay": {
     featured: "ban-chay",
+    metaDescription: "Khám phá các sản phẩm bán chạy tại Green Market: giỏ trái cây, hộp quà trái cây, hoa quả viếng và quà tặng cao cấp, giao nhanh tại TP.HCM.",
+    metaTitle: "Sản Phẩm Bán Chạy - Giỏ Quà & Trái Cây Cao Cấp",
     title: "Sản Phẩm Bán Chạy"
   },
   "khuyen-mai-hot": {
     featured: "khuyen-mai-hot",
+    metaDescription: "Khám phá các sản phẩm khuyến mãi hot tại Green Market với ưu đãi hấp dẫn: giỏ trái cây, hộp quà trái cây, hoa quả viếng và quà tặng cao cấp, giao nhanh tại TP.HCM.",
+    metaTitle: "Khuyến Mãi Hot - Giỏ Quà & Trái Cây Cao Cấp",
     title: "Khuyến Mãi Hot"
   }
 };

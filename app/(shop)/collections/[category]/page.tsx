@@ -43,6 +43,8 @@ function getSubcategoryOptions(category?: CategoryCatalogRecord | null): Catalog
 }
 
 type CategoryPageContext = {
+  metaDescription?: string;
+  metaTitle?: string;
   productCategory: string;
   productFeatured: string;
   routeCategory: string;
@@ -54,6 +56,8 @@ async function resolveCategoryPageContext(routeCategory: string): Promise<Catego
   const featuredCatalog = getProductFeaturedCatalog(routeCategory);
   if (featuredCatalog) {
     return {
+      metaDescription: featuredCatalog.metaDescription,
+      metaTitle: featuredCatalog.metaTitle,
       productCategory: "",
       productFeatured: featuredCatalog.featured,
       routeCategory,
@@ -68,6 +72,8 @@ async function resolveCategoryPageContext(routeCategory: string): Promise<Catego
   }
 
   return {
+    metaDescription: category.metaDescription || undefined,
+    metaTitle: category.metaTitle || undefined,
     productCategory: category.slug,
     productFeatured: "",
     routeCategory: category.slug,
@@ -79,9 +85,12 @@ async function resolveCategoryPageContext(routeCategory: string): Promise<Catego
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const routeParams = await params;
   const catalogContext = await resolveCategoryPageContext(getRouteCategory(routeParams.category));
+  const metadataDescription = catalogContext?.metaDescription;
+  const metadataTitle = catalogContext?.metaTitle || catalogContext?.title || "Danh mục sản phẩm";
 
   return {
-    title: catalogContext?.title || "Danh mục sản phẩm"
+    title: metadataTitle,
+    ...(metadataDescription ? { description: metadataDescription } : {})
   };
 }
 

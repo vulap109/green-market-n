@@ -237,6 +237,7 @@ export function getProductRecordSelect(options: MapProductRecordOptions = {}) {
     sortOrder: true,
     thumbnail: true,
     ...(options.includeDescription ? { description: true } : {}),
+    ...(options.includeMetadata ? { metaDescription: true, metaTitle: true } : {}),
     category: {
       select: {
         ...(options.includeCategoryName ? { name: true } : {}),
@@ -336,6 +337,8 @@ export function mapProductRecord(
     img: image || undefined,
     category: category || undefined,
     ...(options.includeCategoryName ? { categoryName: categoryName || undefined } : {}),
+    ...(options.includeMetadata ? { metaDescription: product.metaDescription || undefined } : {}),
+    ...(options.includeMetadata ? { metaTitle: product.metaTitle || undefined } : {}),
     parentCategory: parentCategory || undefined,
     ...(options.includeCategoryName ? { parentCategoryName: parentCategoryName || undefined } : {}),
     ...(options.includeDescription ? { description: product.description || undefined } : {}),

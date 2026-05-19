@@ -14,6 +14,8 @@ export type ProductRecord = {
   discount?: number | string;
   id?: number | string;
   img?: string;
+  metaDescription?: string;
+  metaTitle?: string;
   name?: string;
   parentCategory?: string;
   parentCategoryName?: string;
@@ -42,6 +44,8 @@ export type CategoryCatalogRecord = {
     name: string;
     slug: string;
   }>;
+  metaDescription: string | null;
+  metaTitle: string | null;
   name: string;
   slug: string;
 };
@@ -70,6 +74,8 @@ export type ProductRecordSource = Readonly<{
   images?: ReadonlyArray<{
     imageUrl?: string | null;
   }> | null;
+  metaDescription?: string | null;
+  metaTitle?: string | null;
   name?: string | null;
   price?: unknown;
   salePrice?: unknown;
@@ -90,6 +96,7 @@ export type ProductRecordSource = Readonly<{
 export type MapProductRecordOptions = Readonly<{
   includeCategoryName?: boolean;
   includeDescription?: boolean;
+  includeMetadata?: boolean;
   includeVariants?: boolean;
 }>;
 
