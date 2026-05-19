@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 
+const DEFAULT_PREVIEW_IMAGE = "/images/cover-trao-yeu-thuong-mb.jpg";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://greenmarket.com.vn"),
   title: {
@@ -20,12 +22,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "vi_VN",
     siteName: "Green Market",
+    images: [
+      {
+        url: DEFAULT_PREVIEW_IMAGE,
+        alt: "Green Market - Trao Yeu Thuong"
+      }
+    ],
     title: "Green Market - Trái Cây Nhập Khẩu & Quà Tặng Cao Cấp",
     description:
       "Green Market chuyên trái cây nhập khẩu, giỏ quà trái cây, bánh kem và quà tặng cao cấp cho nhiều dịp biếu tặng."
   },
   twitter: {
     card: "summary_large_image",
+    images: [DEFAULT_PREVIEW_IMAGE],
     title: "Green Market - Trái Cây Nhập Khẩu & Quà Tặng Cao Cấp",
     description:
       "Green Market chuyên trái cây nhập khẩu, giỏ quà trái cây, bánh kem và quà tặng cao cấp cho nhiều dịp biếu tặng."

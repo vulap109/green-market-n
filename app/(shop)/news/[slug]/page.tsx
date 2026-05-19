@@ -7,6 +7,8 @@ import { buildArticleSchema, buildBreadcrumbListSchema, stringifyJsonLd } from "
 
 export const dynamic = "force-dynamic";
 
+const DEFAULT_PREVIEW_IMAGE = "/images/cover-trao-yeu-thuong-mb.jpg";
+
 type NewsArticlePageProps = Readonly<{
   params: Promise<{
     slug: string;
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: NewsArticlePageProps): Promis
   const metadataTitle = article.metaTitle || article.title || "Tin tức";
   const metadataDescription =
     article.metaDescription || article.description || "Tin tức mới nhất từ Green Market.";
-  const metadataImage = article.thumbnail;
+  const metadataImage = article.thumbnail ? String(article.thumbnail) : DEFAULT_PREVIEW_IMAGE;
 
   return {
     title: metadataTitle,
@@ -48,12 +50,12 @@ export async function generateMetadata({ params }: NewsArticlePageProps): Promis
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,
-      images: metadataImage ? [String(metadataImage)] : undefined
+      images: [metadataImage]
     },
     twitter: {
       title: metadataTitle,
       description: metadataDescription,
-      images: metadataImage ? [String(metadataImage)] : undefined
+      images: [metadataImage]
     }
   };
 }
