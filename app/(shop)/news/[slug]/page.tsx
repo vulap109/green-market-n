@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import NewsArticleClient from "@/components/news/NewsArticleClient";
 import { findNewsArticleBySlug } from "@/lib/news-db";
+import { buildNewsDetailUrl, HOME_ROUTE, NEWS_ROUTE } from "@/lib/routes";
+import { buildArticleSchema, buildBreadcrumbListSchema, stringifyJsonLd } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
@@ -64,5 +66,25 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
     notFound();
   }
 
-  return <NewsArticleClient article={article} contentHtml={contentHtml} />;
+  const articleTitle = article.title || "Tin tức";
+  const articleSchema = buildArticleSchema(article, routeParams.slug);
+  const breadcrumbSchema = buildBreadcrumbListSchema([
+    { href: HOME_ROUTE, label: "Trang chủ" },
+    { href: NEWS_ROUTE, label: "Tin tức" },
+    { href: buildNewsDetailUrl(article.slug || routeParams.slug), label: articleTitle }
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(breadcrumbSchema) }}
+      />
+      <NewsArticleClient article={article} contentHtml={contentHtml} />
+    </>
+  );
 }

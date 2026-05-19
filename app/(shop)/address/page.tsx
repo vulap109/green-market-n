@@ -6,6 +6,7 @@ import {
   PageTitleBlock,
   StaticContentCard
 } from "@/components/static/StaticPageShell";
+import { buildLocalBusinessSchema, stringifyJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Chi Nhánh Hà Nội"
@@ -37,8 +38,15 @@ function StoreLocationCard({
 }
 
 export default function AddressPage() {
+  const localBusinessSchema = buildLocalBusinessSchema();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(localBusinessSchema) }}
+      />
+
       <Breadcrumbs
         items={[
           { href: "/", label: "Trang chủ" },

@@ -12,8 +12,9 @@ import {
   getSimilarProducts
 } from "@/lib/product-db";
 import { getProductCollectionCategory } from "@/lib/product-utils";
-import { HOME_ROUTE } from "@/lib/routes";
-import { formatLowercaseString, formatString, resolveAssetPath } from "@/lib/utils";
+import { buildProductDetailUrl, HOME_ROUTE } from "@/lib/routes";
+import { buildBreadcrumbListSchema, buildProductSchema, stringifyJsonLd } from "@/lib/structured-data";
+import { formatLowercaseString, formatProductSlug, formatString, resolveAssetPath } from "@/lib/utils";
 
 type ProductPageProps = Readonly<{
   params: Promise<{
@@ -73,8 +74,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
     title: product.parentCategoryName || product.categoryName || "Sản phẩm"
   };
 
+  const productTitle = product.name || "Chi tiết sản phẩm";
+  const productHref = buildProductDetailUrl({ slug: formatProductSlug(product) });
+  const productSchema = buildProductSchema(product, productImage, descriptionHtml);
+  const breadcrumbSchema = buildBreadcrumbListSchema([
+    { href: HOME_ROUTE, label: "Trang Chủ" },
+    { href: categoryCatalogLink.href, label: categoryCatalogLink.title },
+    { href: productHref, label: productTitle }
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(breadcrumbSchema) }}
+      />
+
       <Breadcrumbs
         items={[
           { href: HOME_ROUTE, label: "Trang Chủ" },

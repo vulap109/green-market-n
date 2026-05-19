@@ -5,6 +5,7 @@ import NewsCard from "@/components/news/NewsCard";
 import { buildCollectionUrl } from "@/lib/catalog";
 import { getNewsData } from "@/lib/news-db";
 import { findProductByCategory, findProductsByFeatured } from "@/lib/product-db";
+import { buildLocalBusinessSchema, stringifyJsonLd } from "@/lib/structured-data";
 import type { ProductRecord } from "@/lib/product-types";
 
 const HOME_SHELF_LIMIT = 8;
@@ -140,6 +141,7 @@ function SectionHeading({
 }
 
 export default async function HomePage() {
+  const localBusinessSchema = buildLocalBusinessSchema();
   const [homeNewsItems, homeShelves] = await Promise.all([
     getNewsData({
       featuredFirst: true,
@@ -154,8 +156,14 @@ export default async function HomePage() {
   ]);
 
   return (
-    <main className="pb-24">
-      <HomeCarousel />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(localBusinessSchema) }}
+      />
+
+      <main className="pb-24">
+        <HomeCarousel />
 
       {homeShelves.map((shelf) => (
         <section key={shelf.title} className="pt-12">
@@ -275,5 +283,6 @@ export default async function HomePage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

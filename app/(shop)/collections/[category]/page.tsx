@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import CollectionCatalog from "@/components/catalog/CollectionCatalog";
 import { Breadcrumbs } from "@/components/static/StaticPageShell";
 import {
+  buildCollectionUrl,
   CATALOG_PAGE_SIZE,
   type CatalogFilterOption,
   getCatalogRouteCategory,
@@ -18,6 +19,7 @@ import {
 } from "@/lib/product-db";
 import type { CategoryCatalogRecord } from "@/lib/product-types";
 import { HOME_ROUTE } from "@/lib/routes";
+import { buildBreadcrumbListSchema, stringifyJsonLd } from "@/lib/structured-data";
 import { formatParamString } from "@/lib/utils";
 
 type CategoryPageProps = Readonly<{
@@ -125,9 +127,19 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     catalogResult.pageInfo.currentPage
   ].join("|");
   const catalogBanner = getCatalogBanner(catalogContext.productCategory);
+  const categoryHref = buildCollectionUrl({ category: catalogContext.routeCategory });
+  const breadcrumbSchema = buildBreadcrumbListSchema([
+    { href: HOME_ROUTE, label: "Trang Chủ" },
+    { href: categoryHref, label: catalogContext.title }
+  ]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifyJsonLd(breadcrumbSchema) }}
+      />
+
       <Breadcrumbs
         items={[
           { href: HOME_ROUTE, label: "Trang Chủ" },
