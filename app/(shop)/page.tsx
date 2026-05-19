@@ -165,17 +165,20 @@ export default async function HomePage() {
       <main className="pb-24">
         <HomeCarousel />
 
-        <section className="bg-white py-8 md:py-10">
+        <h1 className="sr-only">
+          Green Market - Giỏ Trái Cây, Trái Cây Nhập Khẩu & Bánh Kem Cao Cấp
+        </h1>
+        {/* <section className="bg-white py-8 md:py-10">
           <div className="mx-auto max-w-7xl px-4 text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 md:text-4xl">
+            <h1 className="text-2xl font-bold tracking-tight md:text-4xl" style={{color: 'green'}}>
               Green Market - Trái cây nhập khẩu và giỏ quà trái cây cao cấp
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-gray-600 md:text-base">
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-gray-600 md:text-base" style={{color: 'green'}}>
               Green Market chuyên cung cấp trái cây nhập khẩu tươi ngon, giỏ quà trái cây,
               bánh kem và quà tặng cao cấp cho sinh nhật, thăm hỏi, doanh nghiệp và các dịp lễ.
             </p>
           </div>
-        </section>
+        </section> */}
 
         {homeShelves.map((shelf) => (
           <section key={shelf.title} className="pt-12">

@@ -272,6 +272,14 @@ export default function HomeCarousel() {
             ))}
           </div>
         </div>
+
+        {/* <div className="pointer-events-none absolute inset-x-0 bottom-12 z-20 px-4 sm:bottom-10 md:bottom-7">
+          <div className="mx-auto flex max-w-7xl justify-start">
+            <h1 className="max-w-xl rounded bg-white/80 px-3 py-2 text-[11px] font-semibold leading-snug text-gray-900 shadow-sm backdrop-blur md:px-4 md:text-base">
+              Green Market - Trái cây nhập khẩu và giỏ quà trái cây cao cấp
+            </h1>
+          </div>
+        </div> */}
       </section>
 
       {isModalOpen ? (
