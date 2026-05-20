@@ -68,9 +68,9 @@ export default function NewsArticleClient({ article, contentHtml }: NewsArticleC
         return;
       }
 
-      if (action === "open-catalog") {
-        const category = formatString(actionElement.dataset.newsCategory);
-        router.push(buildCollectionUrl({ category }));
+      if (action === "open-route") {
+        const route  = formatString(actionElement.dataset.newsRoute);
+        router.push(route);
       }
     }
 

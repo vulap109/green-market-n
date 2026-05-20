@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ProductCard from "@/components/catalog/ProductCard";
 import HomeCarousel from "@/components/home/HomeCarousel";
 import NewsCard from "@/components/news/NewsCard";
@@ -32,7 +33,7 @@ type BenefitItem = {
 };
 
 type Testimonial = {
-  initials: string;
+  imageSrc: string;
   name: string;
   quote: string;
 };
@@ -94,19 +95,19 @@ const benefitItems: BenefitItem[] = [
 
 const testimonials: Testimonial[] = [
   {
-    initials: "NL",
-    name: "Nguyễn Thị Lan",
-    quote: "Giỏ hoa quả đẹp tuyệt vời! Hoa quả tươi ngon và đóng gói rất sang trọng."
+    imageSrc: "/images/KH1.jpg",
+    name: "Lan Nguyễn",
+    quote: "Giỏ trái cây đẹp, trái tươi và đóng gói rất cẩn thận. Mình đặt tặng sinh nhật, bạn mình rất thích."
   },
   {
-    initials: "TT",
-    name: "Trần Minh Tuấn",
-    quote: "Tôi đặt giỏ quà tặng đối tác, bưu kiện đến rất nhanh và đẹp mắt."
+    imageSrc: "/images/KH2.jpg",
+    name: "Tuấn TM",
+    quote: "Shop giao đúng giờ, giỏ quà nhìn sang hơn ảnh. Trái cây tươi, không bị dập"
   },
   {
-    initials: "PH",
-    name: "Phạm Thu Hương",
-    quote: "Dịch vụ chuyên nghiệp, giao hàng đúng giờ. Quả cherry Úc rất giòn."
+    imageSrc: "/images/KH3.jpg",
+    name: "Huong Pham",
+    quote: "Dịch vụ tư vấn nhanh, gói quà đẹp. Mình đặt gấp nhưng shop vẫn giao kịp."
   }
 ];
 
@@ -162,7 +163,7 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: stringifyJsonLd(localBusinessSchema) }}
       />
 
-      <main className="pb-24">
+      <main>
         <HomeCarousel />
 
         <h1 className="sr-only">
@@ -203,7 +204,7 @@ export default async function HomePage() {
           </section>
         ))}
 
-        <section className="bg-white py-16">
+        <section className="bg-white py-12">
           <div className="mx-auto max-w-7xl px-4">
             <div className="mb-10 text-center">
               <h2 className="text-3xl font-medium text-gray-800">Tin tức nổi bật</h2>
@@ -222,9 +223,9 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="py-24">
+        <section className="py-12">
           <div className="mx-auto max-w-7xl px-4">
-            <h2 className="mb-16 text-center text-2xl font-black uppercase tracking-[0.24em] text-primary">
+            <h2 className="mb-8 text-center text-2xl font-bold tracking-[0.24em] text-primary">
               Tại Sao Chọn Chúng Tôi?
             </h2>
 
@@ -245,7 +246,7 @@ export default async function HomePage() {
               ))}
             </div>
 
-            <div className="mt-20 grid grid-cols-3 rounded-3xl bg-primary py-10 text-center text-white shadow-2xl shadow-green-900/20">
+            <div className="mt-8 grid grid-cols-3 rounded-3xl bg-primary py-10 text-center text-white shadow-2xl shadow-green-900/20">
               <div className="border-r border-white/10">
                 <span className="mb-1 block text-4xl font-black italic">5.000+</span>
                 <span className="text-[10px] font-bold uppercase tracking-[0.22em] opacity-70">
@@ -268,8 +269,8 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-24">
-          <div className="mb-16 text-center">
+        <section className="mx-auto max-w-7xl px-4 py-12">
+          <div className="mb-6 text-center">
             <h2 className="text-2xl font-black uppercase tracking-tight text-gray-900">
               Khách Hàng Nói Gì
               <span className="ml-2 text-sm font-bold italic tracking-normal text-yellow-400">★ 4.9/5</span>
@@ -285,7 +286,13 @@ export default async function HomePage() {
               >
                 <div className="mb-4 flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-50 p-0.5 ring-2 ring-primary/20">
-                    <span className="text-sm font-bold text-primary">{testimonial.initials}</span>
+                    <Image
+                      src={testimonial.imageSrc}
+                      alt={testimonial.name}
+                      width={44}
+                      height={44}
+                      className="h-full w-full rounded-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold">{testimonial.name}</h3>
