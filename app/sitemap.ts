@@ -19,10 +19,10 @@ export const revalidate = 3600;
 
 const collectionSitemapCategories = [
   "ban-chay",
-  "fruit-basket",
-  "imported-fruits",
-  "cream-cake",
-  "flowers"
+  "gio-trai-cay",
+  "trai-cay-nhap-khau",
+  "banh-kem",
+  "hoa-tuoi"
 ] as const;
 
 const staticSitemapRoutes = [

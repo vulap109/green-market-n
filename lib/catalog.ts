@@ -44,19 +44,19 @@ const defaultBanner: CatalogBanner = {
 
 const bannerImageByCategory: Record<string, CatalogBanner> = {
   "": defaultBanner,
-  "cream-cake": {
+  "banh-kem": {
     desktop: "/images/cake/banner-banh-kem.jpg",
     mobile: "/images/cake/banner-banh-kem-mb.jpg"
   }
 };
 
 const subcategoryFilterByCategory: Record<string, CatalogFilterOption[]> = {
-  "fruit-basket": [
-    { value: "funeral", label: "Giỏ trái cây viếng" },
-    { value: "fresh", label: "Giỏ trái cây tươi" },
-    { value: "box", label: "Hộp quà trái cây" }
+  "gio-trai-cay": [
+    { value: "gio-trai-cay-vieng", label: "Giỏ trái cây viếng" },
+    { value: "gio-trai-cay-tuoi", label: "Giỏ trái cây tươi" },
+    { value: "hop-qua-trai-cay", label: "Hộp quà trái cây" }
   ],
-  "cream-cake": [
+  "banh-kem": [
     { value: "ll", label: "Bánh kem LL" },
     { value: "lq", label: "Bánh kem LQ" },
     { value: "qd", label: "Bánh kem QD" },

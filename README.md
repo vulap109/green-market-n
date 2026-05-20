@@ -40,7 +40,7 @@ npm run check:utf8   # Verify UTF-8 content
 - `app/` - Next.js App Router pages, layout, metadata, and global CSS.
 - `components/` - UI and page-level React components.
 - `lib/` - Shared data loaders, cart logic, formatting, routes, and helpers.
-- `public/data/` - News and address data.
+- `public/data/` - Address data used by checkout.
 - `public/images/` - Static image assets used by products, banners, and articles.
 - `scripts/` - Maintenance scripts.
 
@@ -48,9 +48,8 @@ npm run check:utf8   # Verify UTF-8 content
 
 Product and catalog data are loaded from the database.
 Product descriptions are stored in the `Product.description` database field.
-News metadata is stored in `public/data/news.json`.
-News article bodies are stored in `public/data/news/*.html` and are loaded by
-the Next.js news routes.
+News metadata and article bodies are loaded from the database.
+Checkout address data is stored in `public/data/vietnamAddress.json`.
 
 Cart and checkout state are client-side flows backed by browser storage.
 

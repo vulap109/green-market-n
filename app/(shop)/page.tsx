@@ -47,18 +47,18 @@ const homeShelfConfigs: HomeShelfConfig[] = [
   },
   {
     title: "Giỏ Quà Trái Cây",
-    ctaHref: buildCollectionUrl({ category: "fruit-basket" }),
-    category: "fruit-basket"
+    ctaHref: buildCollectionUrl({ category: "gio-trai-cay" }),
+    category: "gio-trai-cay"
   },
   {
     title: "Trái Cây Nhập Khẩu",
-    ctaHref: buildCollectionUrl({ category: "imported-fruits" }),
-    category: "imported-fruits"
+    ctaHref: buildCollectionUrl({ category: "trai-cay-nhap-khau" }),
+    category: "trai-cay-nhap-khau"
   },
   {
     title: "Bánh Kem",
-    ctaHref: buildCollectionUrl({ category: "cream-cake" }),
-    category: "cream-cake"
+    ctaHref: buildCollectionUrl({ category: "banh-kem" }),
+    category: "banh-kem"
   }
 ];
 

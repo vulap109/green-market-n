@@ -46,7 +46,7 @@ const headerMenuItems: HeaderMenuItem[] = [
     arrowHoverClassName: "group-hover:text-red-500"
   },
   {
-    href: buildCollectionUrl({ category: "fruit-basket" }),
+    href: buildCollectionUrl({ category: "gio-trai-cay" }),
     label: "Giỏ quà trái cây",
     iconClassName: "fa-solid fa-gift",
     itemClassName: "hover:border-green-100 hover:bg-green-50/80 hover:text-primary",
@@ -54,7 +54,7 @@ const headerMenuItems: HeaderMenuItem[] = [
     arrowHoverClassName: "group-hover:text-primary"
   },
   {
-    href: buildCollectionUrl({ category: "imported-fruits" }),
+    href: buildCollectionUrl({ category: "trai-cay-nhap-khau" }),
     label: "Trái cây nhập khẩu",
     iconClassName: "fa-solid fa-apple-whole",
     itemClassName: "hover:border-emerald-100 hover:bg-emerald-50/80 hover:text-emerald-700",
@@ -62,7 +62,7 @@ const headerMenuItems: HeaderMenuItem[] = [
     arrowHoverClassName: "group-hover:text-emerald-600"
   },
   {
-    href: buildCollectionUrl({ category: "cream-cake" }),
+    href: buildCollectionUrl({ category: "banh-kem" }),
     label: "Bánh kem thiết kế",
     iconClassName: "fa-solid fa-cake-candles",
     itemClassName: "hover:border-amber-100 hover:bg-amber-50/80 hover:text-amber-700",
@@ -71,7 +71,7 @@ const headerMenuItems: HeaderMenuItem[] = [
     badge: "New"
   },
   {
-    href: buildCollectionUrl({ category: "flowers" }),
+    href: buildCollectionUrl({ category: "hoa-tuoi" }),
     label: "Hoa tươi nghệ thuật",
     iconClassName: "fa-solid fa-spa",
     itemClassName: "hover:border-pink-100 hover:bg-pink-50/80 hover:text-pink-600",

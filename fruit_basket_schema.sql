@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS user (
 
 -- Hierarchical categories using parent_id.
 -- Example:
--- fruit-basket (parent_id = null)
---   - box   (parent_id = fruit-basket.id)
---   - fresh (parent_id = fruit-basket.id)
+-- gio-trai-cay (parent_id = null)
+--   - hop-qua-trai-cay (parent_id = gio-trai-cay.id)
+--   - gio-trai-cay-tuoi (parent_id = gio-trai-cay.id)
 CREATE TABLE IF NOT EXISTS category (
     id                  BIGSERIAL PRIMARY KEY,
     parent_id           BIGINT REFERENCES category(id) ON DELETE SET NULL,
