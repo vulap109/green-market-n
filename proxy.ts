@@ -15,10 +15,26 @@ const legacyCollectionSubcategorySlugs: Record<string, string> = {
   "funeral": "gio-trai-cay-vieng"
 };
 
+const legacyStaticRoutes: Record<string, string> = {
+  "/privacy-policy": "/chinh-sach-bao-mat",
+  "/delivery-policy": "/chinh-sach-giao-hang",
+  "/return-policy": "/chinh-sach-doi-tra",
+  "/checking-policy": "/chinh-sach-kiem-hang",
+  "/payment-policy": "/chinh-sach-thanh-toan",
+  "/address": "/chi-nhanh-cua-hang"
+};
+
 function createPermanentRedirect(request: NextRequest, pathname: string): NextResponse {
   const targetUrl = request.nextUrl.clone();
   targetUrl.pathname = pathname;
   targetUrl.search = "";
+
+  return NextResponse.redirect(targetUrl, 301);
+}
+
+function createPathPermanentRedirect(request: NextRequest, pathname: string): NextResponse {
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = pathname;
 
   return NextResponse.redirect(targetUrl, 301);
 }
@@ -55,6 +71,12 @@ function createCollectionLegacyRedirect(request: NextRequest): NextResponse | nu
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const staticRedirectPathname = legacyStaticRoutes[pathname];
+
+  if (staticRedirectPathname) {
+    return createPathPermanentRedirect(request, staticRedirectPathname);
+  }
+
   const collectionRedirect = createCollectionLegacyRedirect(request);
 
   if (collectionRedirect) {
@@ -80,5 +102,15 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/product", "/news", "/collections/:path*"]
+  matcher: [
+    "/product",
+    "/news",
+    "/collections/:path*",
+    "/privacy-policy",
+    "/delivery-policy",
+    "/return-policy",
+    "/checking-policy",
+    "/payment-policy",
+    "/address"
+  ]
 };

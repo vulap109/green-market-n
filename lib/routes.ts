@@ -10,12 +10,12 @@ export const CART_ROUTE = "/cart";
 export const CHECKOUT_ROUTE = "/check-out";
 export const ORDER_SUCCESS_ROUTE = "/order-success";
 export const NEWS_ROUTE = "/news";
-export const PRIVACY_POLICY_ROUTE = "/privacy-policy";
-export const DELIVERY_POLICY_ROUTE = "/delivery-policy";
-export const RETURN_POLICY_ROUTE = "/return-policy";
-export const CHECKING_POLICY_ROUTE = "/checking-policy";
-export const PAYMENT_POLICY_ROUTE = "/payment-policy";
-export const ADDRESS_ROUTE = "/address";
+export const PRIVACY_POLICY_ROUTE = "/chinh-sach-bao-mat";
+export const DELIVERY_POLICY_ROUTE = "/chinh-sach-giao-hang";
+export const RETURN_POLICY_ROUTE = "/chinh-sach-doi-tra";
+export const CHECKING_POLICY_ROUTE = "/chinh-sach-kiem-hang";
+export const PAYMENT_POLICY_ROUTE = "/chinh-sach-thanh-toan";
+export const ADDRESS_ROUTE = "/chi-nhanh-cua-hang";
 
 export function buildUrlWithQuery(pathname: string, query: Record<string, QueryValue>): string {
   const searchParams = new URLSearchParams();
