@@ -148,7 +148,7 @@ export default function AppFooter() {
       </div>
 
       <div className="mx-auto max-w-7xl py-4 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300">
+        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">
           © 2026 Green Market - Bảo lưu mọi quyền
         </p>
       </div>

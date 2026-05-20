@@ -63,7 +63,7 @@ export default function LoginForm({ className = "" }: LoginFormProps) {
     >
       <div>
         <p className="text-xs font-black uppercase tracking-[0.18em] text-primary">Green Market</p>
-        <h1 className="mt-3 text-2xl font-black text-gray-950">Đăng nhập</h1>
+        <h1 className="mt-3 text-2xl font-bold text-gray-950">Đăng nhập</h1>
         {/* <p className="mt-2 text-sm text-gray-600">Dùng email và mật khẩu đã được cấp cho tài khoản của bạn.</p> */}
       </div>
 
@@ -105,7 +105,7 @@ export default function LoginForm({ className = "" }: LoginFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[#004e29] disabled:cursor-wait disabled:bg-gray-400"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#004e29] disabled:cursor-wait disabled:bg-gray-400"
       >
         <i className="fa-solid fa-right-to-bracket text-xs" aria-hidden="true" />
         <span>{isSubmitting ? "Đang đăng nhập" : "Đăng nhập"}</span>

@@ -386,7 +386,7 @@ export default function HomeCarousel() {
                 <button
                   type="submit"
                   disabled={isSubmittingConsultation}
-                  className="mt-4 w-full rounded-xl bg-[#c48e58] py-4 text-sm font-black uppercase tracking-[0.24em] text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 w-full rounded-xl bg-[#c48e58] py-4 text-sm font-bold uppercase tracking-[0.24em] text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {isSubmittingConsultation ? "Đang gửi..." : "Gửi thông tin"}
                 </button>

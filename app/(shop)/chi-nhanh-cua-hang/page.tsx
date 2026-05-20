@@ -23,7 +23,7 @@ function StoreLocationCard({
 }>) {
   return (
     <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 transition-all hover:border-primary hover:shadow-md">
-      <p className="text-[11px] font-black uppercase tracking-[0.22em] text-gray-400">{title}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gray-400">{title}</p>
       <p className="mt-2 text-sm leading-relaxed text-gray-700">{address}</p>
       <a
         href={directionsHref}

@@ -399,7 +399,7 @@ export default function AppHeader() {
                   id="header-product-search-view-all"
                   href={buildProductSearchUrl(searchKeyword)}
                   onClick={() => setIsSearchOpen(false)}
-                  className="flex items-center justify-center gap-2 border-t border-gray-100 px-4 py-3 text-xs font-black uppercase tracking-[0.2em] text-primary transition hover:bg-green-50"
+                  className="flex items-center justify-center gap-2 border-t border-gray-100 px-4 py-3 text-xs font-bold uppercase tracking-[0.2em] text-primary transition hover:bg-green-50"
                 >
                   <span>Xem tất cả</span>
                   <i className="fa-solid fa-arrow-right text-[10px]"></i>

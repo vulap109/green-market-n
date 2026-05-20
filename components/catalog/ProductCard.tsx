@@ -68,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
           <Link
             href={productHref}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-white py-2.5 text-[11px] font-black uppercase tracking-wider text-primary transition-all hover:bg-red-500 hover:text-white"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-white py-2.5 text-[11px] font-bold uppercase tracking-wider text-primary transition-all hover:bg-red-500 hover:text-white"
           >
             Chọn mua
           </Link>

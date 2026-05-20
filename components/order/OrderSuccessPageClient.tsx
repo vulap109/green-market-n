@@ -183,13 +183,13 @@ export default function OrderSuccessPageClient({ order }: OrderSuccessPageClient
 
                   <div className="grid gap-3 rounded-3xl border border-white/70 bg-white/80 p-4 text-sm shadow-sm">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Mã đơn hàng
                       </p>
                       <p className="mt-1 text-lg font-bold text-gray-900">{order.code}</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
                         Thời gian đặt
                       </p>
                       <p className="mt-1 font-semibold text-gray-700">{formatOrderDate(order.createdAt)}</p>
@@ -201,14 +201,14 @@ export default function OrderSuccessPageClient({ order }: OrderSuccessPageClient
               <div className="space-y-5 px-6 py-6 md:px-8">
                 <div className="grid gap-4 md:grid-cols-3">
                   <article className="rounded-3xl border border-gray-200 bg-gray-50 px-5 py-4">
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">Khách hàng</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">Khách hàng</p>
                     <p className="mt-2 text-base font-bold text-gray-900">{order.fullname}</p>
                     <p className="mt-1 text-sm font-medium text-gray-600">{order.phone}</p>
                     <p className="mt-1 text-sm text-gray-500">{order.email || "Không có email"}</p>
                   </article>
 
                   <article className="rounded-3xl border border-gray-200 bg-gray-50 px-5 py-4">
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
                       Phương thức thanh toán
                     </p>
                     <p className="mt-2 text-base font-bold text-gray-900">
@@ -218,14 +218,14 @@ export default function OrderSuccessPageClient({ order }: OrderSuccessPageClient
                   </article>
 
                   <article className="rounded-3xl border border-gray-200 bg-gray-50 px-5 py-4">
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">Giao đến</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">Giao đến</p>
                     <p className="mt-2 text-sm leading-6 text-gray-700">{fullAddress || "Chưa có địa chỉ"}</p>
                   </article>
                 </div>
 
                 {order.notes ? (
                   <div className="rounded-3xl border border-amber-200 bg-amber-50 px-5 py-4">
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-amber-700">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-700">
                       Ghi chú đơn hàng
                     </p>
                     <p className="mt-2 text-sm leading-6 text-amber-900">{order.notes}</p>
